@@ -43,7 +43,7 @@ pause > nul & exit /b
 title Dolphin Portable Mode Utility & cls
 echo.
 %cecho% {0e}
-set /p choice="Enable portable mode? (y/n): "
+set /p choice="Dolphin will be closed if it is running. Enable portable mode? (y/n): "
 if /i "%choice%" equ "Y" goto :TransferData
 if /i "%choice%" equ "N" exit /b
 echo.
@@ -52,6 +52,7 @@ goto :main
 
 :TransferData
 echo.
+taskkill /im Dolphin.exe /f > nul 2>&1
 %cecho% {0e}Transferring userdata from {07}%DataPath%{0e}...{\n}
 echo > "%~dp0portable.txt"
 xcopy %DataPath% "%~dp0user\" /E /Y
