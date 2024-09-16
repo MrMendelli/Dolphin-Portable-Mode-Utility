@@ -55,7 +55,7 @@ echo.
 taskkill /im Dolphin.exe /f > nul 2>&1
 %cecho% {0e}Transferring userdata from {07}%DataPath%{0e}...{\n}
 echo > "%~dp0portable.txt"
-xcopy %DataPath% "%~dp0user\" /E /Y
+xcopy %DataPath% "%~dp0User\" /E /Y
 cls
 echo.
 %cecho% {0a}Userdata transfer completed.{\n}
@@ -65,7 +65,7 @@ echo.
 %cecho% {\t}{07}Config ^> GameCube{\n}
 %cecho% {\t}{07}Config ^> Wii{\n}
 echo.
-%cecho% {0e}All instances of {07}%DataPath%{0e}should be replaced with {07}.\user{0e}.{\n}
+%cecho% {0e}All instances of {07}%DataPath%{0e}should be replaced with {07}.\User{0e}.{\n}
 echo.
 %cecho% {0e}Press any key to run Dolphin.{\n}
 pause > nul
