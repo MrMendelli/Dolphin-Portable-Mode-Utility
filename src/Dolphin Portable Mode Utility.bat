@@ -16,16 +16,18 @@ echo.
 pause > nul & exit /b
 
 :PortableCheck
-title Exception!
+cls & title Exception!
 if not exist ".\portable.txt" goto :PathCheck else
 echo.
 %cecho% {0c}
-set /p choice="Portable mode is already enabled, proceed anyway? (y/n): "
+set /p choice="Portable mode is already enabled, proceed anyway? "
 if /i "%choice%" equ "Y" goto :PathCheck
 if /i "%choice%" equ "N" exit /b
 echo.
-%cecho% {0c}You must enter 'y' or 'n' to proceed...{\n} & pause > nul
-goto :main
+cls
+%cecho% {0c}You must enter 'y' or 'n' to proceed...{\n}
+pause > nul
+goto :PortableCheck
 
 :PathCheck
 if exist "%appdata%\Dolphin Emulator" set DataPath="%appdata%\Dolphin Emulator" & goto :main
@@ -40,10 +42,11 @@ echo.
 pause > nul & exit /b
 
 :main
+cls
 title Dolphin Portable Mode Utility & cls
 echo.
 %cecho% {0e}
-set /p choice="Dolphin will be closed if it is running. Enable portable mode? (y/n): "
+set /p choice="Dolphin will be closed if it is running. Enable portable mode? "
 if /i "%choice%" equ "Y" goto :TransferData
 if /i "%choice%" equ "N" exit /b
 echo.
@@ -55,7 +58,7 @@ echo.
 taskkill /im Dolphin.exe /f > nul 2>&1
 %cecho% {0e}Transferring userdata from {07}%DataPath%{0e}...{\n}
 echo > "%~dp0portable.txt"
-xcopy %DataPath% "%~dp0User\" /E /Y
+xcopy %DataPath% "%~dp0user\" /E /Y
 cls
 echo.
 %cecho% {0a}Userdata transfer completed.{\n}
@@ -65,7 +68,7 @@ echo.
 %cecho% {\t}{07}Config ^> GameCube{\n}
 %cecho% {\t}{07}Config ^> Wii{\n}
 echo.
-%cecho% {0e}All instances of {07}%DataPath%{0e}should be replaced with {07}.\User{0e}.{\n}
+%cecho% {0e}All instances of {07}%DataPath%{0e}should be replaced with {07}.\user{0e}.{\n}
 echo.
 %cecho% {0e}Press any key to run Dolphin.{\n}
 pause > nul

@@ -1,3 +1,10 @@
+## 09/21/2024
+## Bugfix
+```diff
+* Corrected portable mode check bug
+* Updated UI
+```
+
 ## 09/15/2024
 ### Minor Update
 ```diff
